@@ -21,4 +21,7 @@ interface NoteDao {
     @Query("delete from notes_table where id == :id")
     fun delete(id: Long)
 
+    @Query("select * from notes_table where id == :id")
+    fun getById(id: Long): Note?
+
 }

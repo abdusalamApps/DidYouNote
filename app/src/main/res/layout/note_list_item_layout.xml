@@ -22,6 +22,7 @@
         android:background="@color/colorItemBackground"
         android:orientation="vertical"
         android:onClick="@{() -> clickListener.onClick(note)}"
+        android:foreground="?android:selectableItemBackgroundBorderless"
         >
 
         <TextView

@@ -40,6 +40,9 @@ class NoteDetailsFragment : Fragment() {
         val viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(NoteDetailsViewModel::class.java)
 
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+        binding.text = arguments.text
 
 
         return binding.root
