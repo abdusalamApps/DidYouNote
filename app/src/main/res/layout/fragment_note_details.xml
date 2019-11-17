@@ -9,12 +9,8 @@
             type="com.halabware.didyounote.viewmodels.NoteDetailsViewModel" />
 
         <variable
-            name="text"
-            type="String" />
-
-        <variable
-            name="noteId"
-            type="Long" />
+            name="note"
+            type="com.halabware.didyounote.database.Note" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +26,7 @@
             android:background="@android:color/transparent"
             android:fontFamily="casual"
             android:padding="16dp"
-            android:text="@{text}"
+            android:text="@{note.text}"
             android:textColor="@android:color/white"
             android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/delete_button"
@@ -45,7 +41,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/colorAccent"
-            android:onClick="@{() -> viewModel.onSave(noteId, editText.getText().toString().trim())}"
+            android:onClick="@{() -> viewModel.onSave(editText.getText().toString().trim())}"
             android:text="save"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -7,11 +7,13 @@ import com.halabware.didyounote.viewmodels.NoteDetailsViewModel
 import com.halabware.didyounote.viewmodels.NotesViewModel
 import java.lang.IllegalArgumentException
 
-class NoteDetailsViewModelFactory (private val dataSource: NoteDao) : ViewModelProvider.Factory {
+class NoteDetailsViewModelFactory (
+    private val noteId: Long,
+    private val dataSource: NoteDao) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(NoteDetailsViewModel::class.java)) {
-            return NoteDetailsViewModel(dataSource = dataSource) as T
+            return NoteDetailsViewModel(noteId = noteId, dataSource = dataSource) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }

@@ -38,21 +38,25 @@ class NoteDetailsFragment : Fragment() {
         val arguments = NoteDetailsFragmentArgs.fromBundle(arguments)
 
         val dataSource = NoteDatabase.getInstance(application).noteDao
-        val viewModelFactory = NoteDetailsViewModelFactory(dataSource)
+        val viewModelFactory = NoteDetailsViewModelFactory(arguments.noteId, dataSource)
         val viewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(NoteDetailsViewModel::class.java)
+            ViewModelProviders
+                .of(this, viewModelFactory).get(NoteDetailsViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        binding.text = arguments.text
-        binding.noteId = arguments.noteId
+
+        viewModel.note.observe(this, Observer {
+            if (it != null) {
+                binding.note = it
+            }
+        })
 
         viewModel.navigateToNotes.observe(this, Observer {
             if (it) {
                 this.findNavController().popBackStack()
                 viewModel.doneNavigatingToNotes()
             }
-
         })
 
         return binding.root

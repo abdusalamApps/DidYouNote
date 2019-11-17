@@ -27,12 +27,8 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/notesFragment">
             <argument
-                android:name="text"
-                app:argType="string" />
-            <argument
                 android:name="noteId"
                 app:argType="long" />
-
 
         </action>
     </fragment>
@@ -45,9 +41,6 @@
         android:id="@+id/noteDetailsFragment"
         android:name="com.halabware.didyounote.ui.NoteDetailsFragment"
         android:label="NoteDetailsFragment" >
-        <argument
-            android:name="text"
-            app:argType="string" />
         <argument
             android:name="noteId"
             app:argType="long" />
