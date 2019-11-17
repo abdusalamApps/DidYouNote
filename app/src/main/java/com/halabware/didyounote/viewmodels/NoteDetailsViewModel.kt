@@ -40,11 +40,13 @@ class NoteDetailsViewModel(
         get() = _navigateToNotes
 
     fun onSave(text: String, date: String) {
-        uiScope.launch {
-            val newNote = Note(noteId = noteId, text = text, date = date)
-            updateNote(newNote)
-            _navigateToNotes.value = true
+        if (!text.equals(note.value?.text)) {
+            uiScope.launch {
+                val newNote = Note(noteId = noteId, text = text, date = date)
+                updateNote(newNote)
+            }
         }
+        _navigateToNotes.value = true
     }
 
     private suspend fun updateNote(note: Note) {
