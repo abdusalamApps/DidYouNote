@@ -29,6 +29,10 @@
             <argument
                 android:name="text"
                 app:argType="string" />
+            <argument
+                android:name="noteId"
+                app:argType="long" />
+
 
         </action>
     </fragment>
@@ -44,5 +48,8 @@
         <argument
             android:name="text"
             app:argType="string" />
+        <argument
+            android:name="noteId"
+            app:argType="long" />
     </fragment>
 </navigation>

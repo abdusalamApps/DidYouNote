@@ -55,11 +55,11 @@ class NotesFragment : Fragment() {
             }
         })
 
-        val adapter = NoteAdapter(NoteClickListener { text ->
+        val adapter = NoteAdapter(NoteClickListener { text, noteId ->
 //            Toast.makeText(context, "$id", Toast.LENGTH_LONG).show()
             this.findNavController().navigate(
                 NotesFragmentDirections
-                    .ActionNotesFragmentToNoteDetailsFragment(text)
+                    .ActionNotesFragmentToNoteDetailsFragment(text, noteId)
             )
         })
 

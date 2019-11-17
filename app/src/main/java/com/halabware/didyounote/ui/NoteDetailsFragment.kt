@@ -43,7 +43,7 @@ class NoteDetailsFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         binding.text = arguments.text
-
+        binding.noteId = arguments.noteId
 
         return binding.root
     }

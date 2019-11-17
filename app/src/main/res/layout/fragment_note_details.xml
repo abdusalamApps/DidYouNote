@@ -11,6 +11,10 @@
         <variable
             name="text"
             type="String" />
+
+        <variable
+            name="noteId"
+            type="Long" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
