@@ -20,7 +20,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/colorItemBackground"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:onClick="@{() -> clickListener.onClick(note)}"
+        >
 
         <TextView
             android:id="@+id/date_textView"

@@ -18,10 +18,30 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/notesFragment" />
+        <action
+            android:id="@+id/action_notesFragment_to_noteDetailsFragment"
+            app:destination="@id/noteDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/notesFragment">
+            <argument
+                android:name="noteId"
+                app:argType="long" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/editorFragment"
         android:name="com.halabware.didyounote.ui.EditorFragment"
         android:label="fragment_editor"
         tools:layout="@layout/fragment_editor" />
+    <fragment
+        android:id="@+id/noteDetailsFragment"
+        android:name="com.halabware.didyounote.ui.NoteDetailsFragment"
+        android:label="NoteDetailsFragment" >
+        <argument
+            android:name="noteId"
+            app:argType="long" />
+    </fragment>
 </navigation>
