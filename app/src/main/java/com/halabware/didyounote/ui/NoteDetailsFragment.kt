@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.halabware.didyounote.R
 import com.halabware.didyounote.database.NoteDatabase
 import com.halabware.didyounote.databinding.FragmentNoteDetailsBinding
@@ -44,6 +46,14 @@ class NoteDetailsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.text = arguments.text
         binding.noteId = arguments.noteId
+
+        viewModel.navigateToNotes.observe(this, Observer {
+            if (it) {
+                this.findNavController().popBackStack()
+                viewModel.doneNavigatingToNotes()
+            }
+
+        })
 
         return binding.root
     }

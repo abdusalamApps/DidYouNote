@@ -12,31 +12,27 @@ class NoteDetailsViewModel(dataSource: NoteDao) : ViewModel() {
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val _navigateToEditor = MutableLiveData<Boolean>()
-    val navigateToEditor: LiveData<Boolean>
-        get() = _navigateToEditor
+    private val _navigateToNotes = MutableLiveData<Boolean>()
+    val navigateToNotes: LiveData<Boolean>
+        get() = _navigateToNotes
 
-    fun doneNavigatingToEditor() {
-        _navigateToEditor.value = false
-    }
-
-    private var note = MutableLiveData<Note?>()
-
-    init {
-
-    }
-
-
-    fun initializeNote(id: Long) {
+    fun onSave(id: Long, text: String) {
         uiScope.launch {
-            note.value = getByIdFromDatabase(id)
+            val note = Note(id = id, text = text)
+            updateNote(note)
+            _navigateToNotes.value = true
         }
     }
 
-    private suspend fun getByIdFromDatabase(id: Long): Note? {
-        return withContext(Dispatchers.IO) {
-            val note = database.getById(id)
-            note
+    private suspend fun updateNote(note: Note) {
+        withContext(Dispatchers.IO) {
+            database.update(note)
         }
     }
+
+    fun doneNavigatingToNotes() {
+        _navigateToNotes.value = false
+    }
+
+
 }
