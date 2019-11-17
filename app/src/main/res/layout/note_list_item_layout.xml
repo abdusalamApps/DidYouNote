@@ -20,7 +20,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/colorItemBackground"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:onClick="@{() -> clickListener.onClick(note)}"
+        android:foreground="?android:selectableItemBackgroundBorderless"
+        >
 
         <TextView
             android:id="@+id/date_textView"
@@ -35,25 +38,30 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="29/2/2019" />
+            tools:text="29/2/2019"
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/text_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:ellipsize="middle"
             android:fontFamily="casual"
+            android:maxLength="70"
+            android:maxLines="2"
             android:paddingStart="16dp"
             android:paddingTop="8dp"
             android:paddingEnd="16dp"
             android:text="@{note.text}"
+            android:textAlignment="viewStart"
             android:textColor="@android:color/white"
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/date_textView"
-            tools:text="Today I spent the whole day coding\nand it was amazing." />
+            tools:text="Today I spent the whole day coding\nand it was amazing. This is a very important" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

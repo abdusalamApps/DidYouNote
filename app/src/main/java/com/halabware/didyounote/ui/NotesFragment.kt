@@ -42,6 +42,9 @@ class NotesFragment : Fragment() {
         val viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(NotesViewModel::class.java)
 
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
         viewModel.navigateToEditor.observe(this, Observer {
             if (it) {
                 this.findNavController()
@@ -52,8 +55,12 @@ class NotesFragment : Fragment() {
             }
         })
 
-        val adapter = NoteAdapter(NoteClickListener { id ->
-            Toast.makeText(context, "$id", Toast.LENGTH_LONG).show()
+        val adapter = NoteAdapter(NoteClickListener { noteId ->
+//            Toast.makeText(context, "$id", Toast.LENGTH_LONG).show()
+            this.findNavController().navigate(
+                NotesFragmentDirections
+                    .ActionNotesFragmentToNoteDetailsFragment(noteId)
+            )
         })
 
         viewModel.notes.observe(viewLifecycleOwner, Observer {
@@ -61,11 +68,8 @@ class NotesFragment : Fragment() {
                 adapter.submitList(it)
             }
         })
+
         binding.notesRecyclerView.adapter = adapter
-
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
-
 
         return binding.root
     }
