@@ -9,7 +9,8 @@ import kotlinx.coroutines.*
 
 class NoteDetailsViewModel(
     private val noteId: Long,
-     val dataSource: NoteDao) : ViewModel() {
+    val dataSource: NoteDao
+) : ViewModel() {
     val database = dataSource
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -17,6 +18,7 @@ class NoteDetailsViewModel(
     init {
         initializeNote()
     }
+
     private val _note = MutableLiveData<Note?>()
     val note: LiveData<Note?>
         get() = _note
@@ -42,7 +44,12 @@ class NoteDetailsViewModel(
     fun onSave(text: String, date: String) {
         if (!text.equals(note.value?.text)) {
             uiScope.launch {
-                val newNote = Note(noteId = noteId, text = text, date = date)
+                val editDate = Note.getDateString()
+                val newNote = Note(
+                    noteId = noteId,
+                    text = text,
+                    date = date,
+                    editDate = editDate)
                 updateNote(newNote)
             }
         }
