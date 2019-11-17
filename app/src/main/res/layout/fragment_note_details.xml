@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -19,6 +20,25 @@
         android:background="@color/colorPrimaryDark"
         android:orientation="vertical">
 
+
+        <TextView
+            android:id="@+id/detailsDate_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:text="@{note.date}"
+            android:textColor="@color/colorDateText"
+            app:layout_constraintBottom_toTopOf="@+id/editText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            tools:text="29/2/2019"
+            android:textSize="14sp"/>
+
         <EditText
             android:id="@+id/editText"
             android:layout_width="match_parent"
@@ -32,7 +52,7 @@
             app:layout_constraintBottom_toTopOf="@+id/delete_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/detailsDate_textView" />
 
         <Button
             android:id="@+id/save_button"
@@ -41,7 +61,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/colorAccent"
-            android:onClick="@{() -> viewModel.onSave(editText.getText().toString().trim())}"
+            android:onClick="@{() -> viewModel.onSave(editText.getText().toString().trim(), note.date)}"
             android:text="save"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"

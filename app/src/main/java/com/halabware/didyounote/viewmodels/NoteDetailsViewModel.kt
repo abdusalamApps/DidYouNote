@@ -39,9 +39,9 @@ class NoteDetailsViewModel(
     val navigateToNotes: LiveData<Boolean>
         get() = _navigateToNotes
 
-    fun onSave(text: String) {
+    fun onSave(text: String, date: String) {
         uiScope.launch {
-            val newNote = Note(noteId = noteId, text = text)
+            val newNote = Note(noteId = noteId, text = text, date = date)
             updateNote(newNote)
             _navigateToNotes.value = true
         }
