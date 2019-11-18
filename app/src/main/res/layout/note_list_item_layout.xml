@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="note"
             type="com.halabware.didyounote.database.Note" />
@@ -76,7 +75,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editDate_textView"
-            tools:text="Today I spent the whole day coding\nand it was amazing. This is a very important"
+            tools:text="Today I spent the whole day coding\n
+            and it was amazing. This is a very important..."
             app:shortNoteText="@{note.text}"
             />
 

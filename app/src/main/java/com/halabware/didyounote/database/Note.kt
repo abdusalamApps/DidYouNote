@@ -3,7 +3,7 @@ package com.halabware.didyounote.database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 @Entity(tableName = "notes_table")
 data class Note(

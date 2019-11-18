@@ -15,6 +15,27 @@ class NoteDetailsViewModel(
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+    private val _navigateToNotes = MutableLiveData<Boolean>()
+    val navigateToNotes: LiveData<Boolean>
+        get() = _navigateToNotes
+
+    fun doneNavigatingToNotes() {
+        _navigateToNotes.value = false
+    }
+
+    private val _showDeleteDialog = MutableLiveData<Boolean>()
+    val showDeleteDialog: LiveData<Boolean>
+        get() = _showDeleteDialog
+
+    fun showDeleteDialog() {
+        _showDeleteDialog.value = true
+    }
+
+    fun doneShowingDeleteDialog() {
+        _showDeleteDialog.value = false
+    }
+
+
     init {
         initializeNote()
     }
@@ -37,19 +58,29 @@ class NoteDetailsViewModel(
         }
     }
 
-    private val _navigateToNotes = MutableLiveData<Boolean>()
-    val navigateToNotes: LiveData<Boolean>
-        get() = _navigateToNotes
+    fun onDelete() {
+        uiScope.launch {
+            delete()
+            _navigateToNotes.value = true
+        }
+    }
+
+    private suspend fun delete() {
+        withContext(Dispatchers.IO) {
+            database.delete(noteId)
+        }
+    }
 
     fun onSave(text: String, date: String) {
-        if (!text.equals(note.value?.text)) {
+        if (text != note.value?.text) {
             uiScope.launch {
                 val editDate = Note.getDateString()
                 val newNote = Note(
                     noteId = noteId,
                     text = text,
                     date = date,
-                    editDate = editDate)
+                    editDate = editDate
+                )
                 updateNote(newNote)
             }
         }
@@ -62,8 +93,5 @@ class NoteDetailsViewModel(
         }
     }
 
-    fun doneNavigatingToNotes() {
-        _navigateToNotes.value = false
-    }
 
 }

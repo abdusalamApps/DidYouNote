@@ -24,4 +24,7 @@ interface NoteDao {
     @Query("select * from notes_table where noteId == :id")
     fun getById(id: Long): Note?
 
+    @Query("select * from notes_table where text like :query ")
+    fun searchByText(query: String): LiveData<List<Note>>
+
 }

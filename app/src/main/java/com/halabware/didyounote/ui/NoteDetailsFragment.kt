@@ -1,6 +1,9 @@
 package com.halabware.didyounote.ui
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +15,8 @@ import androidx.navigation.fragment.findNavController
 import com.halabware.didyounote.R
 import com.halabware.didyounote.database.NoteDatabase
 import com.halabware.didyounote.databinding.FragmentNoteDetailsBinding
-import com.halabware.didyounote.databinding.FragmentNotesBinding
 import com.halabware.didyounote.viewmodelfactories.NoteDetailsViewModelFactory
-import com.halabware.didyounote.viewmodelfactories.NotesViewModelFactory
 import com.halabware.didyounote.viewmodels.NoteDetailsViewModel
-import com.halabware.didyounote.viewmodels.NotesViewModel
 
 class NoteDetailsFragment : Fragment() {
 
@@ -56,6 +56,22 @@ class NoteDetailsFragment : Fragment() {
             if (it) {
                 this.findNavController().popBackStack()
                 viewModel.doneNavigatingToNotes()
+            }
+        })
+
+        viewModel.showDeleteDialog.observe(this, Observer {
+            if (it) {
+//                Show delete dialog
+                val builder: AlertDialog.Builder? = activity?.let {
+                    AlertDialog.Builder(it)
+                }
+                builder?.setMessage("Delete this note?")
+                builder?.setPositiveButton("Delete", DialogInterface.OnClickListener{dialog, id ->
+                    viewModel.onDelete()
+                })
+                builder?.setNegativeButton("Cancel", null)
+                builder?.show()
+                viewModel.doneShowingDeleteDialog()
             }
         })
 
