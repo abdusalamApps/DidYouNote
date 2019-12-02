@@ -1,6 +1,5 @@
 package com.halabware.didyounote.viewmodels
 
-import android.text.TextWatcher
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,7 +13,7 @@ class NotesViewModel(dataSource: NoteDao) : ViewModel() {
     val database = dataSource
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    var notes = database.searchByText(formatSearchQueryString(""))
+    var notes = database.getAllNotes()
 
     fun search(searchQuery: CharSequence) {
         notes = database.searchByText(formatSearchQueryString(searchQuery.toString()))
