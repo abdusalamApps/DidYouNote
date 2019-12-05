@@ -52,7 +52,8 @@
             app:layout_constraintBottom_toTopOf="@+id/delete_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailsDate_textView" />
+            app:layout_constraintTop_toBottomOf="@+id/detailsDate_textView"
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/save_button"
@@ -62,7 +63,7 @@
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/colorAccent"
             android:onClick="@{() -> viewModel.onSave(editText.getText().toString().trim(), note.date)}"
-            android:text="save"
+            android:text="@string/save"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -77,7 +78,7 @@
             android:layout_marginBottom="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
             android:onClick="@{()-> viewModel.showDeleteDialog()}"
-            android:text="delete"
+            android:text="@string/delete"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/save_button"
