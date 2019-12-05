@@ -1,11 +1,13 @@
 package com.halabware.didyounote.viewmodels
 
+import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.halabware.didyounote.database.Note
 import com.halabware.didyounote.database.NoteDao
 import kotlinx.coroutines.*
+import org.w3c.dom.Text
 
 class EditorViewModel(dataSource: NoteDao) : ViewModel() {
 
@@ -18,10 +20,12 @@ class EditorViewModel(dataSource: NoteDao) : ViewModel() {
         get() = _navigateToNotes
 
     fun onSave(text: String) {
-        uiScope.launch {
-            val note = Note(text = text)
-            insert(note)
-            _navigateToNotes.value = true
+        if (!TextUtils.isEmpty(text)) {
+            uiScope.launch {
+                val note = Note(text = text)
+                insert(note)
+                _navigateToNotes.value = true
+            }
         }
     }
 
