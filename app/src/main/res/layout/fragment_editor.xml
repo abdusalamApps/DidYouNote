@@ -31,7 +31,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Consequat mauris nunc congue nisi vitae suscipit tellus mauris. Vel risus commodo viverra maecenas. Nulla facilisi cras fermentum odio. Ac auctor augue mauris augue. Porta nibh venenatis cras sed felis eget velit aliquet. Blandit volutpat maecenas volutpat blandit aliquam etiam erat. Nunc sed augue lacus viverra vitae congue eu. Arcu vitae elementum curabitur vitae nunc sed velit. Volutpat consequat mauris nunc congue. Tortor at auctor urna nunc id cursus metus. Malesuada pellentesque elit eget gravida cum sociis natoque penatibus et. Malesuada proin libero nunc consequat interdum varius sit.
+"
+            />
 
         <Button
             android:id="@+id/button"

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.halabware.didyounote.viewmodels.NoteDetailsViewModel" />
@@ -18,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark"
-        android:orientation="vertical">
+        >
 
 
         <TextView
@@ -53,7 +52,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detailsDate_textView"
-            android:inputType="textPersonName" />
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas fringilla phasellus faucibus scelerisque. Mauris a diam maecenas sed enim ut sem viverra. Sed cras ornare arcu dui vivamus arcu felis. Semper feugiat nibh sed pulvinar proin gravida hendrerit. Tellus elementum sagittis vitae et leo. Faucibus vitae aliquet nec ullamcorper sit. Vestibulum sed arcu non odio euismod lacinia at quis. Scelerisque eu ultrices vitae auctor eu augue ut lectus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada. Nisl suscipit adipiscing bibendum est ultricies integer quis. Arcu ac tortor dignissim convallis aenean et.
+Aliquet bibendum enim facilisis gravida neque convallis. Ligula ullamcorper malesuada proin libero nunc consequat interdum varius. Mauris nunc congue nisi vitae suscipit tellus mauris a diam. Urna molestie at elementum eu facilisis sed odio. Blandit massa enim nec dui nunc mattis enim. In cursus turpis massa tincidunt dui ut. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant. In dictum non consectetur a. Massa sed elementum tempus egestas sed. Morbi non arcu risus quis varius quam quisque. Ultrices gravida dictum fusce ut placerat orci nulla. Vitae suscipit tellus mauris a diam maecenas. Cursus in hac habitasse platea dictumst quisque sagittis purus. Enim sit amet venenatis urna cursus eget nunc. Ultrices eros in cursus turpis massa tincidunt. Integer eget aliquet nibh praesent tristique. Iaculis urna id volutpat lacus laoreet non. Tellus mauris a diam maecenas. Facilisis leo vel fringilla est ullamcorper eget nulla.
+Et molestie ac feugiat sed. Neque gravida in fermentum et sollicitudin ac orci phasellus. Aliquet eget sit amet tellus cras adipiscing enim eu turpis. Sit amet nisl suscipit adipiscing bibendum est. Massa enim nec dui nunc mattis enim ut. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper. Nullam ac tortor vitae purus. Et tortor consequat id porta nibh venenatis cras. Suspendisse faucibus interdum posuere lorem ipsum dolor. Et sollicitudin ac orci phasellus egestas tellus rutrum tellus. Mollis nunc sed id semper risus in hendrerit. Ut etiam sit amet nisl purus in.
+Enim blandit volutpat maecenas volutpat. Risus viverra adipiscing at in tellus integer feugiat scelerisque. Aenean et tortor at risus viverra. Viverra aliquet eget sit amet tellus. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Et ultrices neque ornare aenean euismod elementum. Mattis rhoncus urna neque viverra justo nec ultrices. Non quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Pellentesque id nibh tortor id. Velit aliquet sagittis id consectetur purus ut faucibus. Id diam maecenas ultricies mi eget. Et pharetra pharetra massa massa ultricies mi quis hendrerit. Risus nullam eget felis eget nunc lobortis mattis aliquam faucibus. Donec ultrices tincidunt arcu non sodales neque sodales ut.
+Turpis in eu mi bibendum. Dolor magna eget est lorem. A diam sollicitudin tempor id eu. Condimentum mattis pellentesque id nibh tortor. Aenean et tortor at risus viverra adipiscing. Sed augue lacus viverra vitae congue eu consequat ac. Mi ipsum faucibus vitae aliquet nec. Feugiat nisl pretium fusce id velit. Morbi tristique senectus et netus et malesuada fames. Mattis rhoncus urna neque viverra justo nec ultrices. Facilisis sed odio morbi quis commodo. Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus. Vel elit scelerisque mauris pellentesque pulvinar pellentesque. Duis at consectetur lorem donec massa. Purus faucibus ornare suspendisse sed nisi lacus." />
 
         <Button
             android:id="@+id/save_button"
