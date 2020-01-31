@@ -6,17 +6,22 @@ import androidx.lifecycle.ViewModel
 import com.halabware.didyounote.database.Note
 import com.halabware.didyounote.database.NoteDao
 import com.halabware.didyounote.formatSearchQueryString
-import java.util.*
 
 class SearchViewModel(dataSource: NoteDao) : ViewModel() {
 
     val database = dataSource
 
-    fun search(searchQuery: CharSequence): LiveData<List<Note>> {
-        return database.searchByText(formatSearchQueryString(searchQuery.toString()))
+    public fun search(query: String): LiveData<List<Note>> {
+        return database.searchByText(formatSearchQueryString(query))
     }
 
-    var notes = search("?")
+    private val _word = MutableLiveData<String>()
+    val word: LiveData<String>
+        get() = _word
 
+
+    fun changeWord(new: String) {
+        _word.value = new
+    }
 
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="note"
             type="com.halabware.didyounote.database.Note" />
@@ -13,7 +14,7 @@
             type="com.halabware.didyounote.adapter.NoteClickListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -31,15 +32,14 @@
             android:paddingTop="8dp"
             android:paddingEnd="16dp"
             android:text="@{note.date}"
+            android:textAlignment="viewStart"
             android:textColor="@color/colorDateText"
             android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/text_textView"
+            app:layout_constraintEnd_toStartOf="@+id/editDate_textView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/editDate_textView"
-            tools:text="29/2/2019"
-            android:textAlignment="viewStart"
-            app:layout_constraintBottom_toTopOf="@+id/text_textView"
-            />
+            tools:text="29/2/2019" />
 
         <TextView
             android:id="@+id/editDate_textView"
@@ -48,16 +48,15 @@
             android:paddingStart="16dp"
             android:paddingTop="8dp"
             android:paddingEnd="16dp"
-            app:editDateText="@{note.editDate}"
+            android:textAlignment="viewStart"
             android:textColor="@color/colorDateText"
             android:textSize="14sp"
+            app:editDateText="@{note.editDate}"
             app:layout_constraintBottom_toTopOf="@+id/text_textView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/date_textView"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Edited 30/2/2019"
-            android:textAlignment="viewStart"
-            />
+            tools:text="Edited 30/2/2019" />
 
         <TextView
             android:id="@+id/text_textView"
@@ -75,10 +74,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editDate_textView"
-            tools:text="Today I spent the whole day coding\n
-            and it was amazing. This is a very important..."
             app:shortNoteText="@{note.text}"
-            />
+            tools:text="Today I spent the whole day coding\n
+            and it was amazing. This is a very important..." />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

@@ -19,6 +19,7 @@ class EditorViewModel(dataSource: NoteDao) : ViewModel() {
     val navigateToNotes: LiveData<Boolean>
         get() = _navigateToNotes
 
+
     fun onSave(text: String) {
         if (!TextUtils.isEmpty(text)) {
             uiScope.launch {

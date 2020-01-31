@@ -1,6 +1,7 @@
 package com.halabware.didyounote.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ import com.halabware.didyounote.viewmodelfactories.SearchViewModelFactory
 import com.halabware.didyounote.viewmodels.SearchViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
 import androidx.appcompat.widget.SearchView.OnQueryTextListener;
+import com.halabware.didyounote.formatSearchQueryString
 
 class SearchFragment : Fragment() {
 
@@ -44,31 +46,28 @@ class SearchFragment : Fragment() {
 
         val adapter = NoteAdapter(NoteClickListener { noteId ->
             this.findNavController().navigate(
-                NotesFragmentDirections
-                    .ActionNotesFragmentToNoteDetailsFragment(noteId)
+                SearchFragmentDirections
+                    .actionSearchFragmentToNoteDetailsFragment(noteId)
             )
         })
 
-        viewModel.notes.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                adapter.submitList(it)
-            }
-        })
 
-        binding.searchView.setOnQueryTextListener(object :
-            OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                viewModel.search(query)
-                adapter.notifyDataSetChanged()
-                return true
-            }
+        binding.searchView.apply {
+            isIconified = false
 
-            override fun onQueryTextChange(newText: String): Boolean {
-                viewModel.search(newText)
-                adapter.notifyDataSetChanged()
-                return true
-            }
-        })
+            setOnQueryTextListener(object : OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    viewModel.search(query).observe(viewLifecycleOwner, Observer {
+                        adapter.submitList(it)
+                    })
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String): Boolean {
+                    return true
+                }
+            })
+        }
 
 
         binding.searchResultsRecyclerView.adapter = adapter
