@@ -55,6 +55,16 @@ class NotesFragment : Fragment() {
             }
         })
 
+        viewModel.navigateToSearch.observe(this, Observer {
+            if (it) {
+                this.findNavController()
+                    .navigate(
+                        NotesFragmentDirections
+                            .actionNotesFragmentToSearchFragment())
+                viewModel.doneNavigatingToSearch()
+            }
+        })
+
         val adapter = NoteAdapter(NoteClickListener { noteId ->
 //            Toast.makeText(context, "$id", Toast.LENGTH_LONG).show()
             this.findNavController().navigate(

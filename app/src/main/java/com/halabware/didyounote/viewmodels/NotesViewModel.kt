@@ -15,20 +15,29 @@ class NotesViewModel(dataSource: NoteDao) : ViewModel() {
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     var notes = database.getAllNotes()
 
-    fun search(searchQuery: CharSequence) {
-        notes = database.searchByText(formatSearchQueryString(searchQuery.toString()))
-    }
 
     private val _navigateToEditor = MutableLiveData<Boolean>()
     val navigateToEditor: LiveData<Boolean>
         get() = _navigateToEditor
 
+    private val _navigateToSearch = MutableLiveData<Boolean>()
+    val navigateToSearch: LiveData<Boolean>
+        get() = _navigateToSearch
+
     fun onAdd() {
         _navigateToEditor.value = true
     }
 
+    fun onSearch() {
+        _navigateToSearch.value = true
+    }
+
     fun doneNavigatingToEditor() {
         _navigateToEditor.value = false
+    }
+
+    fun doneNavigatingToSearch() {
+        _navigateToSearch.value = false
     }
 
     override fun onCleared() {

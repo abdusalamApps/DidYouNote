@@ -27,4 +27,6 @@ interface NoteDao {
     @Query("select * from notes_table where text like :query order by date desc")
     fun searchByText(query: String): LiveData<List<Note>>
 
+
+
 }
