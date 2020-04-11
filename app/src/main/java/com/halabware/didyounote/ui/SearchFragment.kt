@@ -28,6 +28,7 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val binding: FragmentSearchBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_search,
@@ -35,13 +36,14 @@ class SearchFragment : Fragment() {
             false
         )
 
+
+
         val application = requireNotNull(this.activity).application
         val dataSource = NoteDatabase.getInstance(application).noteDao
         val viewModelFactory = SearchViewModelFactory(dataSource)
         val viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel::class.java)
 
-        binding.viewmodel = viewModel
         binding.lifecycleOwner = this
 
         val adapter = NoteAdapter(NoteClickListener { noteId ->
@@ -68,7 +70,6 @@ class SearchFragment : Fragment() {
                 }
             })
         }
-
 
         binding.searchResultsRecyclerView.adapter = adapter
 
